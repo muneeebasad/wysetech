@@ -1,0 +1,244 @@
+[
+  {
+    "id": "01",
+    "slug": "helpdesk",
+    "color": "#1A4F8A",
+    "title": "Remote Helpdesk Support",
+    "sub": "End-user IT support, ticketing & remote access",
+    "icon": "Headphones",
+    "items": [
+      "Multi-channel ticket intake (email, web, chat)",
+      "Remote desktop access & troubleshooting",
+      "SLA-based response tiers (1hr, 4hr, NBD)",
+      "User account & password management",
+      "Software installation & configuration support"
+    ],
+    "tools": [
+      {
+        "name": "Zammad",
+        "url": "https://helpdesk.wysetech.com.pk"
+      },
+      {
+        "name": "MeshCentral",
+        "url": "https://rmm.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "02",
+    "slug": "rmm",
+    "color": "#0F6E56",
+    "title": "Device Monitoring & Patch Management",
+    "sub": "Proactive endpoint health & automated patching",
+    "icon": "Monitor",
+    "items": [
+      "Real-time device health monitoring (CPU, RAM, disk, uptime)",
+      "Automated OS & application patch deployment",
+      "Software inventory & compliance tracking",
+      "Scripted maintenance & remediation workflows",
+      "Alerting on hardware anomalies & failures"
+    ],
+    "tools": [
+      {
+        "name": "Tactical RMM",
+        "url": "https://rmm.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "03",
+    "slug": "nms",
+    "color": "#BA7517",
+    "title": "Network Monitoring (NMS)",
+    "sub": "Full visibility across LAN, WAN & cloud infrastructure",
+    "icon": "Network",
+    "items": [
+      "SNMP-based monitoring of routers, switches & firewalls",
+      "Bandwidth utilization & traffic analysis",
+      "Network topology mapping & asset discovery",
+      "Uptime monitoring with alerting & escalations",
+      "VPN & WAN link health monitoring"
+    ],
+    "tools": [
+      {
+        "name": "Zabbix",
+        "url": "https://nms.wysetech.com.pk"
+      },
+      {
+        "name": "LibreNMS",
+        "url": "https://librenms.wysetech.com.pk"
+      },
+      {
+        "name": "Grafana",
+        "url": "https://grafana.wysetech.com.pk"
+      },
+      {
+        "name": "Uptime Kuma",
+        "url": "https://status.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "04",
+    "slug": "endpoint",
+    "color": "#A32D2D",
+    "title": "Antivirus & Endpoint Security",
+    "sub": "Layered protection across all managed endpoints",
+    "icon": "ShieldCheck",
+    "items": [
+      "Antivirus deployment, policy enforcement & scheduled scans",
+      "Endpoint Detection & Response (EDR) with threat hunting",
+      "Malware quarantine, remediation & incident response",
+      "USB / removable media control policies",
+      "Compliance reporting & endpoint health scoring"
+    ],
+    "tools": [
+      {
+        "name": "Wazuh EDR",
+        "url": "https://edr.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "05",
+    "slug": "siem",
+    "color": "#534AB7",
+    "title": "SIEM Solution",
+    "sub": "Centralised log management, threat detection & alerting",
+    "icon": "BarChart3",
+    "items": [
+      "Centralised log ingestion from endpoints, firewalls & apps",
+      "Real-time threat detection with correlation rules",
+      "Security alerting, triage & incident investigation",
+      "Compliance reporting (ISO 27001, PCI-DSS, CIS)",
+      "File integrity monitoring (FIM) & intrusion detection (IDS)"
+    ],
+    "tools": [
+      {
+        "name": "Wazuh",
+        "url": "https://siem.wysetech.com.pk"
+      },
+      {
+        "name": "Graylog",
+        "url": "https://logs.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "06",
+    "slug": "devops",
+    "color": "#3B6D11",
+    "title": "DevOps & Infrastructure Automation",
+    "sub": "CI/CD pipelines, IaC & container orchestration",
+    "icon": "GitBranch",
+    "items": [
+      "CI/CD pipeline design, setup & maintenance",
+      "Infrastructure-as-Code (IaC) provisioning & management",
+      "Container deployment, orchestration & registry management",
+      "Self-hosted application deployment & lifecycle management",
+      "DevSecOps integration — SAST, DAST & secrets scanning"
+    ],
+    "tools": [
+      {
+        "name": "Gitea",
+        "url": "https://git.wysetech.com.pk"
+      },
+      {
+        "name": "Portainer",
+        "url": "https://containers.wysetech.com.pk"
+      },
+      {
+        "name": "Drone CI",
+        "url": "https://ci.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "07",
+    "slug": "email",
+    "color": "#993C1D",
+    "title": "Email Server",
+    "sub": "Deployment, hardening, security & ongoing administration",
+    "icon": "Mail",
+    "items": [
+      "Email server deployment & domain configuration (MX, PTR)",
+      "SPF, DKIM & DMARC implementation & monitoring",
+      "Anti-spam & anti-phishing filtering pipeline",
+      "TLS encryption, certificate management & mail relay config",
+      "Mailbox management, aliases & distribution lists",
+      "Email archiving, retention policies & audit logging"
+    ],
+    "tools": [
+      {
+        "name": "Mailcow Admin",
+        "url": "https://mail.wysetech.com.pk"
+      }
+    ]
+  },
+  {
+    "id": "08",
+    "slug": "backup",
+    "color": "#0F6E56",
+    "title": "Backup & Disaster Recovery",
+    "sub": "Data protection, recovery planning & continuity",
+    "icon": "HardDrive",
+    "items": [
+      "Automated backup scheduling for servers, endpoints & cloud",
+      "3-2-1 backup strategy design & implementation",
+      "Backup integrity verification & restore testing",
+      "Disaster recovery plan (DRP) design & documentation",
+      "Business continuity planning (BCP) & RTO/RPO definition",
+      "DR drill exercises & post-recovery reporting"
+    ],
+    "tools": [
+      {
+        "name": "Available on request",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "09",
+    "slug": "consulting",
+    "color": "#993556",
+    "title": "IT & Cybersecurity Consultation",
+    "sub": "Strategic advisory, risk assessments & vCISO services",
+    "icon": "UserCheck",
+    "items": [
+      "IT infrastructure assessments & gap analysis",
+      "Cybersecurity risk assessments & threat modelling",
+      "Virtual CISO (vCISO) advisory & executive reporting",
+      "Security awareness training planning & delivery",
+      "Vendor & third-party security evaluation",
+      "Compliance readiness (ISO 27001, NIST, CIS Controls)"
+    ],
+    "tools": [
+      {
+        "name": "Schedule a Call",
+        "url": "#contact"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "slug": "policy",
+    "color": "#5F5E5A",
+    "title": "Policy Management",
+    "sub": "Security policy design, enforcement & compliance tracking",
+    "icon": "FileText",
+    "items": [
+      "Acceptable use, BYOD & remote work policy creation",
+      "Password & access control policy definition & enforcement",
+      "Endpoint hardening policy deployment via GPO / MDM",
+      "Security baseline configuration (CIS Level 1 & 2)",
+      "Policy version control, review cycles & audit trails",
+      "Staff acknowledgement tracking & exception management"
+    ],
+    "tools": [
+      {
+        "name": "Available on request",
+        "url": null
+      }
+    ]
+  }
+]

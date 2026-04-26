@@ -1,0 +1,34 @@
+[
+  {
+    "icon": "ShieldCheck",
+    "color": "#F87171",
+    "glowColor": "rgba(163,45,45,0.35)",
+    "gradient": "linear-gradient(135deg, rgba(163,45,45,0.2), rgba(163,45,45,0.05))",
+    "title": "Cybersecurity-First",
+    "description": "Built by security engineers, not generalists. Every service is architected with a security-first mindset — from initial design through ongoing operations."
+  },
+  {
+    "icon": "Unlock",
+    "color": "#60A5FA",
+    "glowColor": "rgba(37,99,235,0.35)",
+    "gradient": "linear-gradient(135deg, rgba(37,99,235,0.2), rgba(37,99,235,0.05))",
+    "title": "Open & Transparent",
+    "description": "No vendor lock-in. Best-of-breed enterprise tools, owned by you. Full visibility into every system we manage — no black boxes, no surprises."
+  },
+  {
+    "icon": "GitMerge",
+    "color": "#34D399",
+    "glowColor": "rgba(15,110,86,0.35)",
+    "gradient": "linear-gradient(135deg, rgba(15,110,86,0.2), rgba(15,110,86,0.05))",
+    "title": "DevOps DNA",
+    "description": "Infrastructure-as-Code from day one. We automate what others do manually — reducing human error, accelerating delivery, and ensuring consistency."
+  },
+  {
+    "icon": "MapPin",
+    "color": "#FBBF24",
+    "glowColor": "rgba(186,117,23,0.35)",
+    "gradient": "linear-gradient(135deg, rgba(186,117,23,0.2), rgba(186,117,23,0.05))",
+    "title": "Local Expertise",
+    "description": "Based in Rawalpindi, Pakistan. Serving clients globally with timezone-flexible support, competitive pricing, and deep regional network knowledge."
+  }
+]

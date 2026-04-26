@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-wysetech2025}
+    volumes:
+      # Persist CMS JSON edits across container restarts
+      - ./content:/app/content
+      # Persist uploaded team photos
+      - ./public/team:/app/public/team
+    restart: unless-stopped

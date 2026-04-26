@@ -1,0 +1,11 @@
+{
+  "badge": "Enterprise MSP Services · Rawalpindi, Pakistan",
+  "subheadline": "Wysetech Technologies delivers enterprise-grade IT management, cybersecurity, and DevOps solutions for growing businesses.",
+  "ctaPrimary": "View Our Services",
+  "ctaSecondary": "Get In Touch",
+  "stats": [
+    { "value": "10+", "label": "Service Lines", "color": "#60A5FA" },
+    { "value": "24/7", "label": "Monitoring",    "color": "#34D399" },
+    { "value": "100%", "label": "Client Privacy",   "color": "#A78BFA" }
+  ]
+}

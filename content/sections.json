@@ -1,0 +1,9 @@
+{
+  "hero": true,
+  "services": true,
+  "pricing": false,
+  "whyUs": true,
+  "tools": false,
+  "contact": true,
+  "team": false
+}
