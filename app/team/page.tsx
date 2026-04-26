@@ -3,6 +3,8 @@ import fs from "fs";
 import path from "path";
 import TeamPageClient from "./TeamPageClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Our Team — Wysetech Technologies",
   description:

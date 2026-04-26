@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import HomeClient from "@/components/HomeClient";
 
+export const dynamic = "force-dynamic";
+
 function readJson(file: string) {
   return JSON.parse(fs.readFileSync(path.join(process.cwd(), "content", file), "utf-8"));
 }
