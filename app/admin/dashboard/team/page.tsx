@@ -85,9 +85,14 @@ export default function TeamEditor() {
       const form = new FormData();
       form.append("file", file);
       form.append("memberId", data[i].id);
+      console.log("[upload] sending to /api/content/team-photo, memberId:", data[i].id, "file:", file.name, file.type, file.size);
       const res = await fetch("/api/content/team-photo", { method: "POST", body: form });
+      console.log("[upload] response status:", res.status, res.ok);
       let body: Record<string, string> = {};
-      try { body = await res.json(); } catch { /* non-JSON response */ }
+      try { body = await res.json(); } catch (e) {
+        console.warn("[upload] could not parse response JSON:", e);
+      }
+      console.log("[upload] response body:", body);
       if (res.ok) {
         update(i, "photo", body.path ?? "");
         update(i, "showPhoto", true);
@@ -95,6 +100,7 @@ export default function TeamEditor() {
         setUploadError(body.error ?? `Upload failed (${res.status})`);
       }
     } catch (err) {
+      console.error("[upload] fetch threw:", err);
       setUploadError(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setUploading(null);
@@ -261,7 +267,12 @@ export default function TeamEditor() {
                         </span>
                       </label>
 
-                      {uploadError && <p className="text-xs text-[#F87171]">{uploadError}</p>}
+                      {uploadError && (
+                        <div className="flex items-start gap-2 px-3 py-2 rounded-lg bg-[#F87171]/10 border border-[#F87171]/30">
+                          <span className="text-[#F87171] font-bold text-sm leading-none mt-0.5">!</span>
+                          <p className="text-xs text-[#F87171] leading-relaxed">{uploadError}</p>
+                        </div>
+                      )}
                       <p className="text-xs text-[#8B949E]/50">JPG, PNG or WebP · max 5 MB</p>
                     </div>
                   </div>

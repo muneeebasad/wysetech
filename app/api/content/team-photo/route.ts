@@ -11,7 +11,9 @@ function isAuthenticated(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!isAuthenticated(req))
+  const authed = isAuthenticated(req);
+  console.log("[team-photo] POST — authed:", authed, "| cookie:", req.cookies.get("admin-session")?.value ?? "(none)");
+  if (!authed)
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const formData = await req.formData();

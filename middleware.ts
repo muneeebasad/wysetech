@@ -29,8 +29,9 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Run on all routes except Next.js internals and static assets
+  // Page routes only — API routes handle their own auth and must not
+  // have their POST bodies intercepted by middleware.
   matcher: [
-    "/((?!_next/static|_next/image|favicon\\.ico|logo\\.png|robots\\.txt|sitemap\\.xml).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|logo\\.png|robots\\.txt|sitemap\\.xml|api/).*)",
   ],
 };
