@@ -160,7 +160,7 @@ export default function TeamEditor() {
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 relative">
                     {member.showPhoto && member.photo ? (
-                      <Image src={member.photo} alt={member.name} fill className="object-cover" sizes="32px" />
+                      <Image src={member.photo} alt={member.name} fill className="object-cover" sizes="32px" unoptimized />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-xs font-bold text-white"
                         style={{ background: `linear-gradient(135deg, ${member.avatarFrom}, ${member.avatarTo})` }}>
@@ -196,7 +196,7 @@ export default function TeamEditor() {
                     {/* Preview */}
                     <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 border border-[#30363D] relative bg-[#0D1117]">
                       {member.showPhoto && member.photo ? (
-                        <Image src={member.photo} alt={member.name} fill className="object-cover" sizes="80px" />
+                        <Image src={member.photo} alt={member.name} fill className="object-cover" sizes="80px" unoptimized />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-xl font-extrabold text-white"
                           style={{ background: `linear-gradient(135deg, ${member.avatarFrom}, ${member.avatarTo})` }}>
@@ -246,10 +246,10 @@ export default function TeamEditor() {
                       {/* Show/hide toggle */}
                       <label className="flex items-center gap-2.5 cursor-pointer mt-1 select-none">
                         <div
-                          onClick={() => update(i, "showPhoto", !member.showPhoto)}
+                          onClick={() => member.photo && update(i, "showPhoto", !member.showPhoto)}
                           className={`relative w-9 h-5 rounded-full transition-colors duration-200 ${
                             member.showPhoto && member.photo ? "bg-[#2563EB]" : "bg-[#30363D]"
-                          }`}
+                          } ${!member.photo ? "opacity-40 cursor-not-allowed" : "cursor-pointer"}`}
                         >
                           <span
                             className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform duration-200"

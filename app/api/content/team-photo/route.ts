@@ -2,15 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { writeFile, mkdir, unlink } from "fs/promises";
 import { existsSync } from "fs";
 import path from "path";
-import { cookies } from "next/headers";
 
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const MAX_BYTES = 5 * 1024 * 1024; // 5 MB
 
+function isAuthenticated(req: NextRequest) {
+  return req.cookies.get("admin-session")?.value === "authenticated";
+}
+
 export async function POST(req: NextRequest) {
-  const cookieStore = cookies();
-  const session = cookieStore.get("admin-session");
-  if (!session || session.value !== "authenticated")
+  if (!isAuthenticated(req))
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const formData = await req.formData();
@@ -51,9 +52,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  const cookieStore = cookies();
-  const session = cookieStore.get("admin-session");
-  if (!session || session.value !== "authenticated")
+  if (!isAuthenticated(req))
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const { memberId } = await req.json();
