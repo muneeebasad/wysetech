@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Plus, Trash2, GripVertical } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -168,8 +170,13 @@ interface SaveBarProps {
 }
 
 export function SaveBar({ dirty, saving, saved, onSave, onDiscard }: SaveBarProps) {
-  if (!dirty && !saved) return null;
-  return (
+  // Mount into document.body via portal so the fixed bar is never trapped
+  // inside a Framer Motion transform stacking context.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
+
+  const bar = (
     <AnimatePresence>
       {(dirty || saved) && (
         <motion.div
@@ -177,7 +184,7 @@ export function SaveBar({ dirty, saving, saved, onSave, onDiscard }: SaveBarProp
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ type: "spring", bounce: 0.25, duration: 0.4 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999]
                      flex items-center gap-3 px-5 py-3 rounded-2xl border border-[#30363D]
                      bg-[#161B22]/95 backdrop-blur-md shadow-2xl"
           style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.5)" }}
@@ -213,6 +220,8 @@ export function SaveBar({ dirty, saving, saved, onSave, onDiscard }: SaveBarProp
       )}
     </AnimatePresence>
   );
+
+  return createPortal(bar, document.body);
 }
 
 export { INPUT, LABEL };

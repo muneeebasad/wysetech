@@ -29,10 +29,15 @@ export async function POST(req: NextRequest) {
   if (file.size > MAX_BYTES)
     return NextResponse.json({ error: "File too large (max 5 MB)" }, { status: 400 });
 
-  const ext = file.type.split("/")[1].replace("jpeg", "jpg");
+  console.log("[team-photo] file:", file.name, "type:", file.type, "size:", file.size, "memberId:", memberId);
+
+  const ext = file.type.split("/")[1]?.replace("jpeg", "jpg");
+  if (!ext) return NextResponse.json({ error: "Could not determine file extension" }, { status: 400 });
+
   const filename = `member-${memberId}.${ext}`;
   const dir = path.join(process.cwd(), "public", "team");
   const filepath = path.join(dir, filename);
+  console.log("[team-photo] writing to:", filepath);
 
   if (!existsSync(dir)) await mkdir(dir, { recursive: true });
 
@@ -50,6 +55,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to save file" }, { status: 500 });
   }
 
+  console.log("[team-photo] write OK — returning path:", `/team/${filename}`);
   return NextResponse.json({ path: `/team/${filename}` });
 }
 
