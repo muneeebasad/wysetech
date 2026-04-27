@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
+  // Block bots/scanners probing for Next.js server actions — this app has none.
+  // Without this, malformed POST requests crash the renderer with an internal error.
+  if (request.headers.has("next-action")) {
+    return new NextResponse(null, { status: 400 });
+  }
+
   const { pathname } = request.nextUrl;
 
   // Let login page and API auth route through
@@ -23,5 +29,8 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  // Run on all routes except Next.js internals and static assets
+  matcher: [
+    "/((?!_next/static|_next/image|favicon\\.ico|logo\\.png|robots\\.txt|sitemap\\.xml).*)",
+  ],
 };

@@ -12,6 +12,7 @@
     "initials": "MA",
     "photo": "",
     "showPhoto": false,
+    "tier": "leadership",
     "social": { "linkedin": "#", "github": "#", "email": "muneeb@wysetech.com.pk" }
   },
   {
@@ -27,6 +28,7 @@
     "initials": "AR",
     "photo": "",
     "showPhoto": false,
+    "tier": "leadership",
     "social": { "linkedin": "#", "github": "#", "email": "ahmad@wysetech.com.pk" }
   },
   {
@@ -42,6 +44,7 @@
     "initials": "SK",
     "photo": "",
     "showPhoto": false,
+    "tier": "staff",
     "social": { "linkedin": "#", "github": "#", "email": "sara@wysetech.com.pk" }
   },
   {
@@ -57,6 +60,7 @@
     "initials": "HA",
     "photo": "",
     "showPhoto": false,
+    "tier": "staff",
     "social": { "linkedin": "#", "email": "hassan@wysetech.com.pk" }
   },
   {
@@ -72,6 +76,7 @@
     "initials": "ZM",
     "photo": "",
     "showPhoto": false,
+    "tier": "staff",
     "social": { "linkedin": "#", "email": "zainab@wysetech.com.pk" }
   },
   {
@@ -87,6 +92,7 @@
     "initials": "UT",
     "photo": "",
     "showPhoto": false,
+    "tier": "staff",
     "social": { "linkedin": "#", "github": "#", "email": "usman@wysetech.com.pk" }
   }
 ]

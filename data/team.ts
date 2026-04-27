@@ -11,6 +11,7 @@ export interface TeamMember {
   initials: string;
   photo: string;
   showPhoto: boolean;
+  tier?: "leadership" | "staff";
   social: {
     linkedin?: string;
     github?: string;

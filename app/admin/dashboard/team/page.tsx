@@ -10,13 +10,16 @@ interface Member {
   id: string; name: string; role: string; department: string;
   departmentColor: string; bio: string; skills: string[];
   avatarFrom: string; avatarTo: string; initials: string;
-  photo: string; showPhoto: boolean; social: Social;
+  photo: string; showPhoto: boolean;
+  tier: "leadership" | "staff";
+  social: Social;
 }
 
 const BLANK_MEMBER: Member = {
   id: "", name: "", role: "", department: "", departmentColor: "#60A5FA",
   bio: "", skills: [], avatarFrom: "#1A4F8A", avatarTo: "#2563EB",
   initials: "", photo: "", showPhoto: false,
+  tier: "staff",
   social: { linkedin: "", github: "", email: "" },
 };
 
@@ -78,19 +81,24 @@ export default function TeamEditor() {
   const handleUpload = async (i: number, file: File) => {
     if (!data) return;
     setUploading(i); setUploadError("");
-    const form = new FormData();
-    form.append("file", file);
-    form.append("memberId", data[i].id);
-    const res = await fetch("/api/content/team-photo", { method: "POST", body: form });
-    if (res.ok) {
-      const { path } = await res.json();
-      update(i, "photo", path);
-      update(i, "showPhoto", true);
-    } else {
-      const { error } = await res.json();
-      setUploadError(error ?? "Upload failed");
+    try {
+      const form = new FormData();
+      form.append("file", file);
+      form.append("memberId", data[i].id);
+      const res = await fetch("/api/content/team-photo", { method: "POST", body: form });
+      let body: Record<string, string> = {};
+      try { body = await res.json(); } catch { /* non-JSON response */ }
+      if (res.ok) {
+        update(i, "photo", body.path ?? "");
+        update(i, "showPhoto", true);
+      } else {
+        setUploadError(body.error ?? `Upload failed (${res.status})`);
+      }
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(null);
     }
-    setUploading(null);
   };
 
   const handleRemovePhoto = async (i: number) => {
@@ -269,6 +277,35 @@ export default function TeamEditor() {
                   <TextField label="Department" value={member.department} onChange={v => update(i, "department", v)} />
                   <ColorField label="Department color" value={member.departmentColor} onChange={v => update(i, "departmentColor", v)} />
                 </div>
+
+                {/* Tier selector */}
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-widest text-[#8B949E] mb-2">
+                    Member tier
+                  </label>
+                  <div className="flex gap-3">
+                    {(["leadership", "staff"] as const).map(t => (
+                      <button
+                        key={t}
+                        type="button"
+                        onClick={() => update(i, "tier", t)}
+                        className={`flex-1 py-2 rounded-lg border text-sm font-semibold transition-all capitalize ${
+                          (member.tier ?? "staff") === t
+                            ? "border-[#2563EB] bg-[#2563EB]/15 text-[#60A5FA]"
+                            : "border-[#30363D] text-[#8B949E] hover:border-[#2563EB]/40 hover:text-[#E6EDF3]"
+                        }`}
+                      >
+                        {t === "leadership" ? "Leadership (wide card)" : "Staff (grid card)"}
+                      </button>
+                    ))}
+                  </div>
+                  {(member.tier ?? "staff") === "leadership" && (
+                    <p className="text-xs text-[#8B949E]/70 mt-1.5">
+                      Leadership members appear as full-width cards above the team grid.
+                    </p>
+                  )}
+                </div>
+
                 <TextareaField label="Bio" value={member.bio} onChange={v => update(i, "bio", v)} rows={3} />
 
                 <div className="grid grid-cols-2 gap-4">

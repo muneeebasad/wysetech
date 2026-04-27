@@ -39,8 +39,13 @@ export async function POST(req: NextRequest) {
     if (old !== filepath && existsSync(old)) await unlink(old).catch(() => {});
   }
 
-  const buffer = Buffer.from(await file.arrayBuffer());
-  await writeFile(filepath, buffer);
+  try {
+    const buffer = Buffer.from(await file.arrayBuffer());
+    await writeFile(filepath, buffer);
+  } catch (err) {
+    console.error("team-photo write failed:", err);
+    return NextResponse.json({ error: "Failed to save file" }, { status: 500 });
+  }
 
   return NextResponse.json({ path: `/team/${filename}` });
 }

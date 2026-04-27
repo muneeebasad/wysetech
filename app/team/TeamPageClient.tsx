@@ -207,12 +207,62 @@ export default function TeamPageClient({
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {team.map((member, index) => (
-              <TeamCard key={member.id} member={member} index={index} />
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative space-y-14">
+          {/* Leadership — full-width cards */}
+          {(() => {
+            const leaders = team.filter(m => m.tier === "leadership");
+            if (leaders.length === 0) return null;
+            return (
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <span
+                    className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(26,79,138,0.18), rgba(15,110,86,0.12))",
+                      border: "1px solid rgba(37,99,235,0.25)",
+                      color: "#60A5FA",
+                    }}
+                  >
+                    Leadership
+                  </span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-[#2563EB]/20 to-transparent" />
+                </div>
+                <div className="space-y-5">
+                  {leaders.map((member, i) => (
+                    <TeamCard key={member.id} member={member} index={i} />
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Staff — 3-col grid */}
+          {(() => {
+            const staff = team.filter(m => m.tier !== "leadership");
+            if (staff.length === 0) return null;
+            return (
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <span
+                    className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(15,110,86,0.14), rgba(26,79,138,0.08))",
+                      border: "1px solid rgba(52,211,153,0.2)",
+                      color: "#34D399",
+                    }}
+                  >
+                    The Team
+                  </span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-[#34D399]/20 to-transparent" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {staff.map((member, i) => (
+                    <TeamCard key={member.id} member={member} index={i} />
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
